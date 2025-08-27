@@ -30,13 +30,14 @@ const getStatusLabel = (status?: string) => {
   }
 };
 
-export default async function ApartmentDetail({ params }: { params: { id: string } }) {
+export default async function ApartmentDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5004";
   let apartment: Apartment | null = null;
   let error = null;
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/apartments/app/get/${params.id}`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE_URL}/api/apartments/app/get/${id}`, { cache: "no-store" });
     if (res.ok) {
       apartment = await res.json();
     } else if (res.status === 404) {
@@ -152,13 +153,13 @@ export default async function ApartmentDetail({ params }: { params: { id: string
                 </svg>
                 <span className="text-lg">{apartment.location}</span>
               </div>
-              <p className="text-gray-600 text-lg mb-6">{apartment.size}</p>
+              <p className="text-gray-600 text-lg mb-6">{`${apartment.size} m²`}</p>
             </div>
             
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <div className="text-sm text-gray-600 mb-2">Preço</div>
               <div className="text-4xl font-bold text-blue-900">
-                {typeof apartment.price === "number" ? `R$ ${apartment.price.toLocaleString('pt-BR')}` : apartment.price}
+                {typeof apartment.price === "number" ? `R$ ${apartment.price.toLocaleString('pt-BR')}` : `R$ ${apartment.price}`}
               </div>
             </div>
             

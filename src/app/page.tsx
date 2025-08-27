@@ -259,12 +259,7 @@ export default async function Home() {
                         )}
                         <div className="absolute top-4 right-4 group">
                           <FaHeart 
-                            className="text-red-500 cursor-pointer hover:text-red-600 transition-colors" 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              // TODO: Add favorite functionality
-                            }} 
+                            className="text-red-500 cursor-default group-hover:text-red-600 transition-colors" 
                           />
                           <div className="absolute right-0 top-8 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                             Adicionar aos favoritos
