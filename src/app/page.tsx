@@ -59,9 +59,7 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-lg">VZ</span>
-              </div>
+              <Image src="/logo.png" alt="Logo" width={40} height={40} className="rounded-full bg-white p-1" />
               <span className="text-xl font-semibold">Vanessa Zaniolo</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
@@ -274,7 +272,7 @@ export default async function Home() {
                       <div className="p-6">
                         <h3 className="text-xl font-semibold mb-2 text-gray-900 hover:text-blue-600 transition-colors">{apartment.title}</h3>
                         <p className="text-gray-600 mb-4">{apartment.location}</p>
-                        <p className="text-gray-600 mb-4">{apartment.size}</p>
+                        <p className="text-gray-600 mb-4">{`${apartment.size} m²`}</p>
                         
                         <div className="flex items-center gap-4 mb-4">
                           <div className="flex items-center gap-1">
@@ -287,7 +285,7 @@ export default async function Home() {
                           </div>
                         </div>
                         
-                        <div className="text-2xl font-bold text-blue-900 mb-4">{typeof apartment.price === "number" ? `R$ ${apartment.price}` : apartment.price}</div>
+                        <div className="text-2xl font-bold text-blue-900 mb-4">{typeof apartment.price === "number" ? `R$ ${apartment.price.toLocaleString('pt-BR')}` : `R$ ${apartment.price}`}</div>
                         
                         <div className="text-center w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
                           Ver Detalhes
@@ -318,9 +316,7 @@ export default async function Home() {
             {/* Brand Info */}
             <div className="md:col-span-1">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-blue-900 font-bold text-lg">VZ</span>
-                </div>
+                <Image src="/logo.png" alt="Logo" width={40} height={40} className="rounded-full bg-white p-1" />
                 <span className="text-xl font-semibold">VZ Vanessa Zaniolo</span>
               </div>
               <p className="text-blue-100 mb-6">
