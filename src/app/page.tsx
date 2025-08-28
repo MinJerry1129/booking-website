@@ -65,8 +65,7 @@ export default async function Home() {
               <span className="text-xl font-semibold">Vanessa Zaniolo</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="hover:text-blue-200 transition-colors">Home</a>
-              <a href="#" className="hover:text-blue-200 transition-colors">Casas</a>
+              <a href="#" className="hover:text-blue-200 transition-colors">Home</a>              
               <a href="#" className="hover:text-blue-200 transition-colors">Valores</a>
               <a href="#" className="hover:text-blue-200 transition-colors">Contato</a>
             </nav>
@@ -103,8 +102,8 @@ export default async function Home() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-80 h-80 bg-gray-200 rounded-full border-2 border-blue-600 flex items-center justify-center">
-                <span className="text-gray-500">Imagem/Vídeo</span>
+              <div className="w-80 h-80 rounded-full border-2 border-blue-600 overflow-hidden relative">
+                <Image src="/myhero.png" alt="Imagem destaque" fill className="object-cover" priority />
               </div>
             </div>
           </div>
@@ -340,7 +339,6 @@ export default async function Home() {
               <h3 className="text-lg font-semibold mb-4">Imóveis</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Apartamentos</a></li>
-                <li><a href="#" className="hover:text-blue-200 transition-colors">Casas</a></li>
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Lançamentos</a></li>
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Comerciais</a></li>
               </ul>
