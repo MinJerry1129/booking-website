@@ -193,7 +193,7 @@ export default async function ApartmentDetail({ params }: { params: { id: string
               </div>
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded bg-gray-100 border">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6a4 4 0 1 1 0 8 4 4 0 010-8z"/></svg>
                 </span>
                 <span>{String(apartment.bedrooms)} dormitórios</span>
               </div>
@@ -245,9 +245,8 @@ export default async function ApartmentDetail({ params }: { params: { id: string
         {/* Projeto */}
         <section id="projeto" className="py-2">
           <div className="mx-auto max-w-4xl">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-semibold text-gray-900">Projeto</h2>
-              <span className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">Visão geral</span>
+            <div className="mb-4 text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">Projeto</h2>
             </div>
             <div className="rounded-2xl overflow-hidden border bg-white shadow-sm mb-6">
               {apartment.thumbnail ? (
@@ -269,9 +268,8 @@ export default async function ApartmentDetail({ params }: { params: { id: string
 
         {/* Apartamentos (gallery) */}
         <section id="apartamentos">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold text-gray-900">Apartamentos</h2>
-            <span className="text-sm text-gray-500">Galeria</span>
+          <div className="mb-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">Apartamentos</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {apartment.thumbnail ? (
@@ -294,13 +292,24 @@ export default async function ApartmentDetail({ params }: { params: { id: string
 
         {/* Plantas */}
         <section id="plantas">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Plantas</h2>
-          <div className="rounded-xl border p-6 bg-white text-gray-600 shadow-sm">Imagens e variações das plantas em breve.</div>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center">Plantas</h2>
+          <div className="mx-auto w-[80%] md:w-[60%]">
+            <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
+              {apartment.thumbnail ? (
+                <div className="aspect-[16/10] w-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={apartment.thumbnail} alt={`${apartment.title} planta`} className="w-full h-full object-cover" />
+                </div>
+              ) : (
+                <div className="p-6 text-gray-600">Imagem da planta não disponível.</div>
+              )}
+            </div>
+          </div>
         </section>
 
         {/* Quadro de Áreas */}
         <section id="areas">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Quadro de Áreas</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center">Quadro de Áreas</h2>
           <div className="overflow-x-auto border rounded-xl shadow-sm">
             <table className="min-w-full text-sm">
               <thead className="bg-gray-50 text-gray-600">
@@ -325,19 +334,68 @@ export default async function ApartmentDetail({ params }: { params: { id: string
 
         {/* Diferenciais */}
         <section id="diferenciais">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Diferenciais</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Piscina","Academia","Área Gourmet","Coworking","Playground","Pet place","Segurança 24h","Bicicletário"].map((f) => (
-              <div key={f} className="border rounded-xl p-4 text-center text-gray-700 bg-white shadow-sm hover:shadow-md transition">{f}</div>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">Diferenciais</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {[
+              { label: "Piscina", icon: ( 
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M3 16c1.5 0 2 .75 3 .75s1.5-.75 3-.75 2 .75 3 .75 1.5-.75 3-.75 2 .75 3 .75 1.5-.75 3-.75V18c-1.5 0-2 .75-3 .75s-1.5-.75-3-.75-2 .75-3 .75-1.5-.75-3-.75V16zM6 6h2a4 4 0 014 4v1h-2v-1a2 2 0 00-2-2H6V6z"/></svg>
+              )},
+              { label: "Academia", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M3 10h2v4H3v-4zm16 0h2v4h-2v-4zM7 9h2v6H7V9zm8 0h2v6h-2V9zm-4-2h2v10h-2V7z"/></svg>
+              )},
+              { label: "Área Gourmet", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v2H6V2zM5 6h14l-1 14H6L5 6zm4 3v8h2V9H9zm4 0v8h2V9h-2z"/></svg>
+              )},
+              { label: "Coworking", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v8H4V6zm0 10h10v2H4v-2zm12 0h4v2h-4v-2z"/></svg>
+              )},
+              { label: "Playground", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M6 20H4v-8l8-6 8 6v8h-2v-6l-6-4.5L6 14v6z"/></svg>
+              )},
+              { label: "Pet place", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c-3 0-6 2-6 5h12c0-3-3-5-6-5zm-4-9a2 2 0 110 4 2 2 0 010-4zm8 0a2 2 0 110 4 2 2 0 010-4zM5 9a1.8 1.8 0 110 3.6A1.8 1.8 0 015 9zm14 0a1.8 1.8 0 110 3.6A1.8 1.8 0 0119 9z"/></svg>
+              )},
+              { label: "Segurança 24h", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4zm0 4.2L6 8v4c0 3.9 2.8 7.6 6 7.8 3.2-.2 6-3.9 6-7.8V8l-6-1.8z"/></svg>
+              )},
+              { label: "Bicicletário", icon: (
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M5 17a3 3 0 110-6 3 3 0 010 6zm14 0a3 3 0 110-6 3 3 0 010 6zM13 5h3v2h-2l2 4h-3l-2-4H8V5h5z"/></svg>
+              )},
+            ].map((item) => (
+              <div key={item.label} className="border rounded-2xl p-5 text-center bg-white shadow-sm hover:shadow-md transition flex flex-col items-center justify-center gap-3">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-blue-700 border border-blue-100">
+                  {item.icon}
+                </div>
+                <div className="text-gray-800 font-medium">{item.label}</div>
+              </div>
             ))}
           </div>
         </section>
 
         {/* Localização */}
         <section id="localizacao">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Localização</h2>
-          <div className="rounded-xl border p-6 bg-white text-gray-700 shadow-sm">
-            Endereço: {apartment.location}
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center">Localização</h2>
+          <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
+            <div className="aspect-[16/9] md:aspect-[16/8] w-full">
+              <iframe
+                title="Mapa"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(apartment.location)}&output=embed`}
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="p-4 flex items-center justify-between text-gray-700">
+              <div className="truncate">Endereço: {apartment.location}</div>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(apartment.location)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:underline shrink-0"
+              >
+                Abrir no Google Maps
+              </a>
+            </div>
           </div>
         </section>
 
@@ -345,7 +403,7 @@ export default async function ApartmentDetail({ params }: { params: { id: string
 
         {/* FAQ */}
         <section id="faq">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Perguntas frequentes</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center">Perguntas frequentes</h2>
           <div className="divide-y border rounded-xl bg-white shadow-sm">
             {[
               { q: "Qual o status da obra?", a: statusLabel },
