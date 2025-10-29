@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaSearch, FaUser, FaBell, FaHeart, FaBed, FaBath, FaMapMarkerAlt, FaBuilding, FaCalendar, FaFileAlt, FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaArrowRight } from "react-icons/fa";
+import { FaSearch, FaUser, FaBell, FaHeart, FaBed, FaBath, FaMapMarkerAlt, FaBuilding, FaCalendar, FaFileAlt, FaFacebook, FaInstagram, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 
 type Apartment = {
@@ -30,6 +30,44 @@ const getStatusLabel = (status?: string) => {
       return "Disponível";
   }
 };
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Corretora de Imóveis em Curitiba | Vanessa Zaniolo",
+  description:
+    "Imóveis em Curitiba nos bairros Batel, Champagnat, Bigorrilho, Cabral e Ecoville. Apartamentos de alto padrão em planta e prontos para morar. Confira agora!",
+  keywords: [
+    "corretora de imóveis Curitiba",
+    "apartamentos Batel",
+    "imóveis Champagnat",
+    "apartamentos Bigorrilho",
+    "imóveis Cabral",
+    "apartamentos Ecoville",
+    "lançamentos imobiliários Curitiba",
+  ],
+  alternates: {
+    canonical: "https://avanessacorretora.com.br",
+  },
+  openGraph: {
+    title: "A Vanessa Corretora de Imóveis em Curitiba",
+    description:
+      "Corretora de imóveis em Curitiba com empreendimentos nos bairros Batel, Champagnat, Bigorrilho, Cabral e Ecoville.",
+    url: "https://avanessacorretora.com.br",
+    siteName: "Avanessa Corretora",
+    images: [
+      {
+        url: "https://avanessacorretora.com.br/myhero.png", // substitua por uma imagem real hospedada
+        width: 1200,
+        height: 630,
+        alt: "Corretora de Imóveis em Curitiba - Vanessa Zaniolo",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+};
+
 
 
 export default async function Home() {
@@ -63,14 +101,11 @@ export default async function Home() {
               <span className="text-xl font-semibold">Vanessa Zaniolo</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="hover:text-blue-200 transition-colors">Home</a>              
-              <a href="#" className="hover:text-blue-200 transition-colors">Valores</a>
-              <a href="#" className="hover:text-blue-200 transition-colors">Contato</a>
             </nav>
             <div className="flex items-center space-x-4">
-              <FaSearch className="cursor-pointer hover:text-blue-200" />
-              <FaUser className="cursor-pointer hover:text-blue-200" />
-              <FaBell className="cursor-pointer hover:text-blue-200" />
+               {/* <FaSearch className="cursor-pointer hover:text-blue-200" />
+               <FaUser className="cursor-pointer hover:text-blue-200" />
+               <FaBell className="cursor-pointer hover:text-blue-200" /> */}
             </div>
           </div>
         </div>
@@ -87,17 +122,6 @@ export default async function Home() {
               <p className="text-xl mb-8 text-blue-100">
                 Encontre o apartamento dos seus sonhos com as melhores condições e localização privilegiada.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <input
-                  type="text"
-                  placeholder="Buscar imóvel..."
-                  className="flex-1 px-4 py-3 rounded-lg text-gray-900"
-                />
-                <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg flex items-center gap-2 transition-colors">
-                  <FaSearch />
-                  Buscar Imóvel
-                </button>
-              </div>
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-80 rounded-full border-2 border-blue-600 overflow-hidden relative">
@@ -111,45 +135,33 @@ export default async function Home() {
       {/* About Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Sobre a GT. Building</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">A Vanessa Corretora!</h2>
           <div className="max-w-4xl mx-auto text-center mb-12">
             <p className="text-lg text-gray-600 leading-relaxed">
-              A GT. Building é uma empresa especializada em incorporação, com foco em projetos residenciais de qualidade. 
-              Nosso último projeto, "Trio Pinheirinho", foi entregue em novembro de 2024, demonstrando nosso compromisso 
-              com a excelência e pontualidade na entrega.
+              	Sou corretora de imóveis diretamente da incorporadora GT-Building, registrada no CRECI 24643, 
+	 	especialista em imóveis de alto padrão em planta ou prontos para morar. 
+		Experiência, confiança e excelência nos mais de 15 anos trabalhando na área. 
+		Seja Bem Vindo, aqui você pode observar as distintas opções que com muito prazer vou te apresentar.
             </p>
           </div>
           
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FaBuilding className="text-blue-600 text-2xl" />
               </div>
               <div className="text-3xl font-bold text-blue-900 mb-2">14</div>
-              <div className="text-gray-600">PROJETOS NO APTO</div>
+              <div className="text-gray-600">PROJETOS DISPONIVEIS</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FaCalendar className="text-blue-600 text-2xl" />
               </div>
-              <div className="text-3xl font-bold text-blue-900 mb-2">6</div>
-              <div className="text-gray-600">ANOS DE HISTÓRIA</div>
+              <div className="text-3xl font-bold text-blue-900 mb-2">15+</div>
+              <div className="text-gray-600">ANOS DE EXPERIENCIA</div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaMapMarkerAlt className="text-blue-600 text-2xl" />
-              </div>
-              <div className="text-3xl font-bold text-blue-900 mb-2">PR</div>
-              <div className="text-gray-600">SEDE</div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaFileAlt className="text-blue-600 text-2xl" />
-              </div>
-              <div className="text-3xl font-bold text-blue-900 mb-2">81</div>
-              <div className="text-gray-600">PUBLICAÇÕES</div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -157,59 +169,60 @@ export default async function Home() {
       {/* Regions Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Principais regiões da GT. Building</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Principais regiões em Curitiba</h2>
+		<h3 className="text-xl font-semibold text-center mb-6">Bairros</h3>
           
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {/* Cities */}
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Cidades</h3>
-              <div className="bg-blue-600 text-white p-6 rounded-lg">
-                <div className="text-2xl font-bold mb-2">Curitiba</div>
-                <div className="text-blue-100">12 bairros ativos</div>
-              </div>
-            </div>
-
             {/* Neighborhoods */}
             <div>
-              <h3 className="text-xl font-semibold mb-6">Bairros</h3>
-              <div className="grid grid-cols-2 gap-4">
+              
+              <div className="grid grid-cols-1 gap-4">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <div className="font-semibold">Batel</div>
                   <div className="text-gray-600">3 imóveis</div>
                   <div className="text-sm text-gray-500">Curitiba, Paraná</div>
-                </div>
+                </div>                
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <div className="font-semibold">Cabral</div>
+                  <div className="text-gray-600">2 imóveis</div>
+                  <div className="text-sm text-gray-500">Curitiba, Paraná</div>
+                </div>                
+              </div>
+            </div>
+	<div>
+              <div className="grid grid-cols-1 gap-4">                
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <div className="font-semibold">Champagnat</div>
                   <div className="text-gray-600">2 imóveis</div>
                   <div className="text-sm text-gray-500">Curitiba, Paraná</div>
-                </div>
+                </div>              
                 <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="font-semibold">Bigorrilho</div>
-                  <div className="text-gray-600">4 imóveis</div>
-                  <div className="text-sm text-gray-500">Curitiba, Paraná</div>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="font-semibold">Cabral</div>
+                  <div className="font-semibold">Ecovilhe</div>
                   <div className="text-gray-600">2 imóveis</div>
                   <div className="text-sm text-gray-500">Curitiba, Paraná</div>
                 </div>
               </div>
             </div>
+<div>
+              <div className="grid grid-cols-1 gap-4">                
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <div className="font-semibold">Bigorrilho</div>
+                  <div className="text-gray-600">4 imóveis</div>
+                  <div className="text-sm text-gray-500">Curitiba, Paraná</div>
+                </div>                
+              </div>
+            </div>
           </div>
 
-          <div className="text-center mt-12">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg flex items-center gap-2 mx-auto transition-colors">
-              VEJA REPRESENTA ESSA EMPRESA
-              <FaArrowRight />
-            </button>
-          </div>
+ 
         </div>
       </section>
 
       {/* Properties Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Imóveis da GT. Building</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Imóveis que te apresento</h2>
           
           {/* Loading State */}
           {isLoading && (
@@ -317,16 +330,18 @@ export default async function Home() {
             <div className="md:col-span-1">
               <div className="flex items-center space-x-2 mb-4">
                 <Image src="/logo.png" alt="Logo" width={40} height={40} className="rounded-full bg-white p-1" />
-                <span className="text-xl font-semibold">VZ Vanessa Zaniolo</span>
+                <span className="text-xl font-semibold">Vanessa Zaniolo</span>
               </div>
               <p className="text-blue-100 mb-6">
-                Encontre o imóvel dos seus sonhos com as melhores condições e atendimento personalizado.
+                Encontre o imóvel dos seus sonhos com as melhores condições e um atendimento personalizado comigo.
               </p>
               <div className="flex space-x-4">
-                <FaFacebook className="text-2xl cursor-pointer hover:text-blue-200" />
-                <FaInstagram className="text-2xl cursor-pointer hover:text-blue-200" />
-                <FaLinkedin className="text-2xl cursor-pointer hover:text-blue-200" />
-                <FaTwitter className="text-2xl cursor-pointer hover:text-blue-200" />
+  <a href="https://www.facebook.com/vanessacorretora" target="_blank" rel="noopener noreferrer">
+    <FaFacebook className="text-2xl cursor-pointer hover:text-blue-200" />
+  </a>
+  <a href="https://www.instagram.com/avanessacorretora" target="_blank" rel="noopener noreferrer">
+    <FaInstagram className="text-2xl cursor-pointer hover:text-blue-200" />
+  </a>
               </div>
             </div>
 
@@ -336,7 +351,7 @@ export default async function Home() {
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Apartamentos</a></li>
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Lançamentos</a></li>
-                <li><a href="#" className="hover:text-blue-200 transition-colors">Comerciais</a></li>
+                {/*<li><a href="#" className="hover:text-blue-200 transition-colors">Comerciais</a></li>*/}
               </ul>
             </div>
 
@@ -348,6 +363,7 @@ export default async function Home() {
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Champagnat</a></li>
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Bigorrilho</a></li>
                 <li><a href="#" className="hover:text-blue-200 transition-colors">Cabral</a></li>
+		<li><a href="#" className="hover:text-blue-200 transition-colors">Ecovilhe</a></li>
               </ul>
             </div>
 
@@ -355,8 +371,8 @@ export default async function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contato</h3>
               <ul className="space-y-2">
-                <li>(41) 99999-9999</li>
-                <li>contato@vanessazaniolo.com</li>
+                <li>(55) 41 9102-7491</li>
+                <li>vanessa.zaniolo@gtbuilding.com.br</li>
                 <li>Curitiba, PR</li>
               </ul>
             </div>

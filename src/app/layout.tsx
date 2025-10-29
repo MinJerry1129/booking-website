@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Booking",
-  description: "Booking",
+  title: "Vanessa Zaniolo",
+  description: "Corretora de imoveis",
 };
 
 export default function RootLayout({
