@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ContactModal from "./ContactModal";
+import PlantaCarousel from "@/components/PlantaCarousel";
 
 type Apartment = {
   _id: string;
@@ -15,6 +16,7 @@ type Apartment = {
   description?: string;
   thumbnail?: string;
   apartamentosImages?: string[];
+  plantaImages?: string[];
   plantaImage?: string;
 };
 
@@ -55,7 +57,7 @@ export default async function ApartmentDetail({
     } else {
       error = `Erro ao carregar imóvel: ${res.status}`;
     }
-  } catch (e) {
+  } catch {
     error = "Erro de conexão. Verifique sua internet.";
   }
 
@@ -124,9 +126,6 @@ export default async function ApartmentDetail({
   }
 
   const statusLabel = getStatusLabel(apartment.status);
-  const isUnderConstruction = apartment.status === "under_construction";
-
-  console.log(apartment);
 
   return (
     <div className="min-h-screen bg-white">
@@ -240,8 +239,7 @@ export default async function ApartmentDetail({
               {apartment.title}
             </h1>
             <p className="mt-3 text-gray-700">
-              A leveza e a sofisticação atemporal estão presentes em cada
-              detalhe.
+              {apartment.description}
             </p>
             <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm border">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -424,13 +422,13 @@ export default async function ApartmentDetail({
                 </h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {apartment.apartamentosImages.map((imageUrl, i) => (
+                {apartment.apartamentosImages.slice(0, 3).map((imageUrl, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     key={i}
                     src={imageUrl}
                     alt={`${apartment.title} imagem ${i + 1}`}
-                    className="aspect-[16/10] w-full object-cover rounded-xl border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition"
+                    className="h-[300px] w-[300px] object-cover rounded-xl border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition mx-auto"
                   />
                 ))}
               </div>
@@ -438,25 +436,23 @@ export default async function ApartmentDetail({
           )}
 
         {/* Plantas */}
-        {apartment.plantaImage && (
+        {(apartment.plantaImages && apartment.plantaImages.length > 0) || apartment.plantaImage ? (
           <section id="plantas">
             <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center">
               Plantas
             </h2>
-            <div className="mx-auto w-[80%] md:w-[60%]">
-              <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
-                <div className="aspect-[16/10] w-full">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={apartment.plantaImage}
-                    alt={`${apartment.title} planta`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+            <div className="mx-auto w-full md:w-[80%]">
+              <PlantaCarousel
+                title={apartment.title}
+                images={
+                  apartment.plantaImages && apartment.plantaImages.length > 0
+                    ? apartment.plantaImages
+                    : [apartment.plantaImage as string]
+                }
+              />
             </div>
           </section>
-        )}
+        ) : null}
 
         {/* Quadro de Áreas */}
         <section id="areas">
