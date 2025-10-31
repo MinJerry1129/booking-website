@@ -421,16 +421,18 @@ export default async function ApartmentDetail({
                   Apartamentos
                 </h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {apartment.apartamentosImages.slice(0, 3).map((imageUrl, i) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={i}
-                    src={imageUrl}
-                    alt={`${apartment.title} imagem ${i + 1}`}
-                    className="h-[300px] w-[300px] object-cover rounded-xl border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition mx-auto"
-                  />
-                ))}
+              <div className="overflow-x-auto pb-4 apartment-images-scroll">
+                <div className="flex gap-4 min-w-max px-2">
+                  {apartment.apartamentosImages.map((imageUrl, i) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={i}
+                      src={imageUrl}
+                      alt={`${apartment.title} imagem ${i + 1}`}
+                      className="h-[300px] w-[300px] flex-shrink-0 object-cover rounded-xl border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition"
+                    />
+                  ))}
+                </div>
               </div>
             </section>
           )}

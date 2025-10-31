@@ -112,12 +112,12 @@ export default async function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-blue-900 text-white py-20">
+      <section className="bg-blue-900 text-white py-10">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Descubra os Melhores Lançamentos imobiliário em Curitiba
+                Descubra os Melhores Lançamentos imobiliários em Curitiba
               </h1>
               <p className="text-xl mb-8 text-blue-100">
                 Encontre o apartamento dos seus sonhos com as melhores condições e localização privilegiada.

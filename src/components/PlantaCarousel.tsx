@@ -29,15 +29,15 @@ export default function PlantaCarousel({ images, title }: Props) {
     }
   }, [pages.length, currentPage]);
 
-  const goPrev = () => setCurrentPage((p) => Math.max(0, p - 1));
-  const goNext = () => setCurrentPage((p) => Math.min(pages.length - 1, p + 1));
+  // const goPrev = () => setCurrentPage((p) => Math.max(0, p - 1));
+  // const goNext = () => setCurrentPage((p) => Math.min(pages.length - 1, p + 1));
 
   if (!images || images.length === 0) return null;
 
   return (
     <div className="relative" ref={containerRef}>
       <div className="flex items-center">
-        <button
+        {/* <button
           type="button"
           onClick={goPrev}
           aria-label="Anterior"
@@ -46,7 +46,7 @@ export default function PlantaCarousel({ images, title }: Props) {
           disabled={currentPage === 0}
         >
           <svg className="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
-        </button>
+        </button> */}
 
         <div className="overflow-hidden w-full">
           <div
@@ -62,7 +62,7 @@ export default function PlantaCarousel({ images, title }: Props) {
                       key={`${idx}-${i}`}
                       src={url}
                       alt={`${title || "Planta"} ${idx * visibleCount + i + 1}`}
-                      className="h-[300px] w-[300px] object-cover rounded-xl border mx-auto"
+                      className="h-[600px] w-[600px] object-cover rounded-xl border mx-auto"
                     />
                   ))}
                 </div>
@@ -71,7 +71,7 @@ export default function PlantaCarousel({ images, title }: Props) {
           </div>
         </div>
 
-        <button
+        {/* <button
           type="button"
           onClick={goNext}
           aria-label="Próximo"
@@ -80,7 +80,7 @@ export default function PlantaCarousel({ images, title }: Props) {
           disabled={currentPage === pages.length - 1}
         >
           <svg className="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
-        </button>
+        </button> */}
       </div>
 
       {/* Dots */}
