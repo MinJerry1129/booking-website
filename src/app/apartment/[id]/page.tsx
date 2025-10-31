@@ -423,7 +423,7 @@ export default async function ApartmentDetail({
               </div>
               <div className="overflow-x-auto pb-4 apartment-images-scroll">
                 <div className="flex gap-4 min-w-max px-2">
-                  {apartment.apartamentosImages.map((imageUrl, i) => (
+                  {apartment.apartamentosImages.slice().reverse().map((imageUrl, i) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       key={i}
